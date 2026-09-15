@@ -1,0 +1,103 @@
+{
+  "schema": "qualitative-atlas-spec",
+  "description": "Four visually reviewed cases selected post-hoc from 72 strict candidates among 142 frozen evaluation_subset scans. The ambiguous fourth v1 display case was replaced after visual QA; no predictions, metrics, thresholds, or model parameters were changed. Each displayed scan improves both IoU and B-IoU over ToothGroupNet and is not below PointNet++ on either metric. Related-method columns are actual checkpoint inference, not paper screenshots.",
+  "artifact_scope": "evaluation_subset_posthoc_selection_from_predictions_frozen_before_gt",
+  "figure_scope_footer": "Post-hoc display selection from 142 frozen evaluation_subset scans; 72 strict candidates met the stated metric filter. Aggregate results and failure cases are reported separately.",
+  "baseline_method_id": "tgn_baseline",
+  "ours_method_id": "ours_2d",
+  "distance_clip": 3.0,
+  "methods": [
+    {
+      "id": "tgn_baseline",
+      "display_name": "ToothGroupNet",
+      "figure_name": "ToothGroupNet",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/toothgroupnet/predictions",
+      "inference_receipt": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/figure_audits_final/toothgroupnet.json",
+      "metrics": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/evaluation/toothgroupnet.json"
+    },
+    {
+      "id": "tsegnet",
+      "display_name": "TSegNet (TGN repro.)",
+      "figure_name": "TSegNet\n(TGN repro.)",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/tsegnet/predictions",
+      "inference_receipt": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/tsegnet/inference_receipt.json",
+      "metrics": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/tsegnet/local_five_metrics.json"
+    },
+    {
+      "id": "pointtransformer",
+      "display_name": "Point Transformer",
+      "figure_name": "Point\nTransformer",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/pointtransformer/predictions",
+      "inference_receipt": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/pointtransformer/inference_receipt.json",
+      "metrics": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/pointtransformer/local_five_metrics.json"
+    },
+    {
+      "id": "pointnetpp",
+      "display_name": "PointNet++",
+      "figure_name": "PointNet++",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/pointnetpp/predictions",
+      "inference_receipt": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/figure_audits_final/pointnetpp.json",
+      "metrics": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/evaluation/pointnetpp.json"
+    },
+    {
+      "id": "crosstooth_pointonly_adapter",
+      "display_name": "CrossTooth-Point",
+      "figure_name": "CrossTooth-Point\n(official point-only)",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/crosstooth_pointonly_adapter/predictions",
+      "inference_receipt": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/crosstooth_pointonly_adapter/inference_receipt.json",
+      "metrics": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/related_methods/crosstooth_pointonly_adapter/local_five_metrics.json"
+    },
+    {
+      "id": "ours_2d",
+      "display_name": "Ours",
+      "figure_name": "Ours",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/ours/predictions",
+      "inference_receipt": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/figure_audits_final/ours.json",
+      "metrics": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/evaluation/ours.json"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "01EDMPPZ_upper",
+      "obj": "/home/wwf/3D seg/deployment/data/obj/01EDMPPZ/01EDMPPZ_upper.obj",
+      "gt": "/home/wwf/3D seg/deployment/data/json/01EDMPPZ/01EDMPPZ_upper.json",
+      "azimuth_deg": 45.0,
+      "elevation_deg": 75.0
+    },
+    {
+      "case_id": "6I8A5049_lower",
+      "obj": "/home/wwf/3D seg/deployment/data/obj/6I8A5049/6I8A5049_lower.obj",
+      "gt": "/home/wwf/3D seg/deployment/data/json/6I8A5049/6I8A5049_lower.json",
+      "azimuth_deg": 45.0,
+      "elevation_deg": 75.0
+    },
+    {
+      "case_id": "01E84NTX_lower",
+      "obj": "/home/wwf/3D seg/deployment/data/obj/01E84NTX/01E84NTX_lower.obj",
+      "gt": "/home/wwf/3D seg/deployment/data/json/01E84NTX/01E84NTX_lower.json",
+      "azimuth_deg": 45.0,
+      "elevation_deg": 75.0
+    },
+    {
+      "case_id": "PP48V5RU_lower",
+      "obj": "/home/wwf/3D seg/deployment/data/obj/PP48V5RU/PP48V5RU_lower.obj",
+      "gt": "/home/wwf/3D seg/deployment/data/json/PP48V5RU/PP48V5RU_lower.json",
+      "azimuth_deg": 45.0,
+      "elevation_deg": 75.0
+    }
+  ],
+  "branch_2d": {
+    "focus_case": "01EDMPPZ_upper",
+    "focus_view": 0,
+    "multi_views": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "boundary_threshold": 0.5,
+    "raw_root": "/home/wwf/3D seg/deployment/figures/qualitative_atlas_evaluation_subset_2d_diagnostic/test",
+    "export_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/multitask_2d_export/test",
+    "lift_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/multitask_2d_lift/scores/test"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "module-ablation-spec",
+  "description": "Cumulative module settings evaluated on the same frozen cohort. Ground truth is read only after predictions are frozen for regional analysis and visualization.",
+  "ours_method_id": "ours",
+  "methods": [
+    {
+      "id": "tgn_raw",
+      "display_name": "Baseline 3D network",
+      "figure_name": "Baseline 3D\nnetwork",
+      "module_state": "2D boundary fusion=off; semantic mesh refiner=off; boundary verification=off",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/toothgroupnet/predictions"
+    },
+    {
+      "id": "fixed_alpha",
+      "display_name": "Add 2D multiview boundary fusion",
+      "figure_name": "2D boundary\nfusion",
+      "module_state": "2D boundary fusion=on; semantic mesh refiner=off; boundary verification=off",
+      "module_definition": "Learned 2D boundary probability, 2D-to-3D lifting and fixed selected fusion/sampling policy. Alpha=0.1 is held fixed internally and is not an ablation factor.",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/boundary_fusion/predictions"
+    },
+    {
+      "id": "fixed_alpha_semantic",
+      "display_name": "Add semantic-guided mesh refinement",
+      "figure_name": "Semantic mesh\nrefiner",
+      "module_state": "2D boundary fusion=on; semantic mesh refiner=on; boundary verification=off",
+      "module_definition": "Multitask 2D semantic/boundary evidence followed by graph partition, connected-component and label reassignment rules.",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/semantic_refiner/predictions"
+    },
+    {
+      "id": "ours",
+      "display_name": "Add teacher-guided boundary verification",
+      "figure_name": "Ours (Full)",
+      "module_state": "2D boundary fusion=on; semantic mesh refiner=on; boundary verification=on",
+      "module_definition": "PointNet++ teacher-seeded candidate split with boundary-interface acceptance/rejection gate.",
+      "prediction_root": "/home/wwf/3D seg/deployment/runs/semantic_boundary_pipeline/pipeline/ours/predictions"
+    }
+  ]
+}
